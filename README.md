@@ -27,9 +27,6 @@ These instructions will get you a copy of this project up and running on your lo
 1. Start each service with Docker:
    - `docker build -t book-service`
    - `docker run -p 8080:8080 book-service`
-2. Apply the Kubernetes deployments:
-   - `kubectl apply -f k8s/book-service.yaml`
-   - `kubectl apply -f k8s/user-service.yaml`
 3. Start the Angular application:
    - `ng serve`
 
