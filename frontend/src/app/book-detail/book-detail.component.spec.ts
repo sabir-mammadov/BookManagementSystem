@@ -1,35 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BookService } from '../book.service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-book-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css']
-})
-export class BookDetailComponent implements OnInit {
-  book: any;
+import { BookDetailComponent } from './book-detail.component';
 
-  constructor(
-    private route: ActivatedRoute,
-    private bookService: BookService
-  ) { }
+describe('BookDetailComponent', () => {
+  let component: BookDetailComponent;
+  let fixture: ComponentFixture<BookDetailComponent>;
 
-  ngOnInit() {
-    this.getBook();
-  }
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [BookDetailComponent],
+    });
+    fixture = TestBed.createComponent(BookDetailComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  getBook(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.bookService.getBook(id)
-      .subscribe(book => this.book = book);
-  }
-
-  editBook(): void {
-    // Edit book
-  }
-
-  deleteBook(): void {
-    // Delete book
-  }
-}
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

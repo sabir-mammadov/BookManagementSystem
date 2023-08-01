@@ -1,26 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { BookService } from '../book.service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.css']
-})
-export class BookListComponent implements OnInit {
-  books: any[];
+import { BookListComponent } from './book-list.component';
 
-  constructor(private bookService: BookService) { }
+describe('BookListComponent', () => {
+  let component: BookListComponent;
+  let fixture: ComponentFixture<BookListComponent>;
 
-  ngOnInit() {
-    this.getBooks();
-  }
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [BookListComponent]
+    });
+    fixture = TestBed.createComponent(BookListComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  getBooks(): void {
-    this.bookService.getBooks()
-      .subscribe(books => this.books = books);
-  }
-
-  addBook(): void {
-    // Add book
-  }
-}
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -1,43 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BookService } from '../book.service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-book-form',
-  templateUrl: './book-form.component.html',
-  styleUrls: ['./book-form.component.css']
-})
-export class BookFormComponent implements OnInit {
-  book: any = {};
+import { BookFormComponent } from './book-form.component';
 
-  constructor(
-    private route: ActivatedRoute,
-    private bookService: BookService
-  ) { }
+describe('BookFormComponent', () => {
+  let component: BookFormComponent;
+  let fixture: ComponentFixture<BookFormComponent>;
 
-  ngOnInit() {
-    this.getBook();
-  }
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [BookFormComponent]
+    });
+    fixture = TestBed.createComponent(BookFormComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  getBook(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.bookService.getBook(id)
-        .subscribe(book => this.book = book);
-    }
-  }
-
-  onSubmit(): void {
-    if (this.book.id) {
-      this.bookService.updateBook(this.book)
-        .subscribe(() => this.goBack());
-    } else {
-      this.bookService.addBook(this.book)
-        .subscribe(() => this.goBack());
-    }
-  }
-
-  goBack(): void {
-    // Go back
-  }
-}
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

@@ -1,24 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-user-registration',
-  templateUrl: './user-registration.component.html',
-  styleUrls: ['./user-registration.component.css']
-})
-export class UserRegistrationComponent implements OnInit {
-  user: any = {};
+import { UserRegistrationComponent } from './user-registration.component';
 
-  constructor(private userService: UserService) { }
+describe('UserRegistrationComponent', () => {
+  let component: UserRegistrationComponent;
+  let fixture: ComponentFixture<UserRegistrationComponent>;
 
-  ngOnInit() { }
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [UserRegistrationComponent]
+    });
+    fixture = TestBed.createComponent(UserRegistrationComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  onSubmit(): void {
-    this.userService.register(this.user)
-      .subscribe(() => this.goBack());
-  }
-
-  goBack(): void {
-    // Go back
-  }
-}
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
