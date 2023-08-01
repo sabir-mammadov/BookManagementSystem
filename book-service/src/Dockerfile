@@ -1,4 +1,17 @@
+# Start with a base image containing Java runtime
 FROM openjdk:11
+
+# Add Maintainer Info
+LABEL maintainer="sabir.mammadov@icloud.com"
+
+# Make port 8080 available to the world outside this container
 EXPOSE 8080
-ADD /target/book-service.jar book-service.jar
+
+# The application's jar file
+ARG JAR_FILE="book-service-for-the-Book-Service-0.0.1-SNAPSHOT.jar"
+
+# Add the application's jar to the container
+ADD ${JAR_FILE} book-service.jar
+
+# Run the jar file
 ENTRYPOINT ["java","-jar","/book-service.jar"]

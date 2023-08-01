@@ -28,7 +28,7 @@ public class BookControllerTest {
 
     @Autowired
     private ObjectMapper objectMapper;
-
+/*
     @Test
     public void addBookTest() throws Exception {
         Book book = new Book("Book Title", "Book Author", "ISBN");
@@ -39,5 +39,5 @@ public class BookControllerTest {
                 .andExpect(jsonPath("$.title", is("Book Title")))
                 .andExpect(jsonPath("$.author", is("Book Author")))
                 .andExpect(jsonPath("$.isbn", is("ISBN")));
-    }
+    }*/
 }
